@@ -10,5 +10,15 @@ describe 'stories class' do
 			expect(page).to have_content('Short story')
 			expect(page).to have_content('Steve was')
 		end
+
+		it 'can be given votes' do
+			visit new_story_path
+			fill_in 'Name', with: 'Short story'
+			fill_in 'Body', with: 'Steve was cock-blocked'
+			click_button 'Submit'
+
+			click_button 'Up'
+			expect(page).to have_content '+1'
+		end
 	end
 end

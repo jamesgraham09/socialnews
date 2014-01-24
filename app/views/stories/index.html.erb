@@ -9,5 +9,7 @@
 	<%= truncate(story.body, length: 70) %><br>
 	<small>Created by <%= story.user.email %></small>
 	<br>
+	<%= link_to 'Upvote', new_vote_path %>
+	<br>
 	<hr>
 <% end %>
