@@ -3,8 +3,12 @@ Thanks for submitting the below
 <h1><%= @story.name %></h1>
 <p><%= @story.body %></p>
 
-<%= link_to 'Edit This Story', edit_story_path(@story) %>
-//
-<%= link_to 'Delete This Story', story_path(@story), :method => :delete %>
+<% if @story.user == current_user %>
+  <%= link_to 'Edit This Story', edit_story_path(@story) %>
+  //
+  <%= link_to 'Delete This Story', story_path(@story), :method => :delete %>
+<% else %>
+  Story created by <%= @story.user.email %>
+<% end %>
 <br>
 <%= link_to 'Back to all Stories', stories_path %>

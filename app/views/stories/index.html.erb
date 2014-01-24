@@ -6,7 +6,8 @@
 <% @stories.each do |story| %>
 	<strong><%= link_to story.name, story_path(story)%></strong>
 	<br>
-	<%= truncate(story.body, length: 70) %>
+	<%= truncate(story.body, length: 70) %><br>
+	<small>Created by <%= story.user.email %></small>
 	<br>
 	<hr>
 <% end %>

@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+	before_action :authenticate_user!, except: [:index, :show]
 
 	def new
 		@story = Story.new
@@ -6,6 +7,7 @@ class StoriesController < ApplicationController
 
 	def create
 		@story = Story.new params[:story].permit(:name, :string, :body, :text)
+		@story.user = current_user
 		if @story.save
 			redirect_to story_path(@story)
 		else
@@ -22,11 +24,11 @@ class StoriesController < ApplicationController
 	end
 
 	def edit
-		@story = Story.find(params[:id])
+		@story = current_user.stories.find(params[:id])
 	end
 
 	def update
-		@story = Story.find(params[:id])
+		@story = current_user.stories.find(params[:id])
 		if @story.update params[:story].permit(:name, :string, :body, :text)
 			redirect_to story_path(@story)
 		else
@@ -35,7 +37,7 @@ class StoriesController < ApplicationController
 	end
 
 	def destroy
-		@story = Story.find(params[:id])
+		@story = current_user.stories.find(params[:id])
 		@story.destroy
 		redirect_to '/stories'
 	end
