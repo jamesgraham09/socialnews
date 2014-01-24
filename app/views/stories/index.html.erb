@@ -1,0 +1,12 @@
+<h1>Welcome to the stories index</h1>
+<%= link_to 'Add a new story here', new_story_path %>
+<br>
+<br>
+<hr>
+<% @stories.each do |story| %>
+	<strong><%= link_to story.name, story_path(story)%></strong>
+	<br>
+	<%= truncate(story.body, length: 70) %>
+	<br>
+	<hr>
+<% end %>

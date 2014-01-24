@@ -1,0 +1,11 @@
+<%= form_for @story do |x| %>
+  
+  <%= x.label :name %>
+  <%= x.text_field :name %>
+  <br>
+  <%= x.label :body %>
+  <%= x.text_area :body %>
+  <br>
+  <%= x.submit 'Submit' %>
+
+<% end %>

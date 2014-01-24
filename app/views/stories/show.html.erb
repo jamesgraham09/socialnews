@@ -1,0 +1,10 @@
+Thanks for submitting the below
+<br><br>
+<h1><%= @story.name %></h1>
+<p><%= @story.body %></p>
+
+<%= link_to 'Edit This Story', edit_story_path(@story) %>
+//
+<%= link_to 'Delete This Story', story_path(@story), :method => :delete %>
+<br>
+<%= link_to 'Back to all Stories', stories_path %>
